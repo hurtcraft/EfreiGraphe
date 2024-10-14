@@ -7,13 +7,19 @@ public class Station extends MetroComponent
     private String numLigne; // ==> a cause des lignes bis
     private boolean isTerminus;
     private int nbBranchement;
-    public Station(int numStation, String nom, String numLigne, boolean isTerminus, int nbBranchement) {
+
+    private int x;
+    private int y;
+    public Station(int numStation, String nom, String numLigne, boolean isTerminus, int nbBranchement, int x, int y) {
         this.numStation = numStation;
         this.nom = nom;
         this.numLigne = numLigne;
         this.isTerminus = isTerminus;
         this.nbBranchement = nbBranchement;
+        this.x = x;
+        this.y = y;
     }
+
     public int getNumStation() {
         return numStation;
     }
@@ -48,6 +54,18 @@ public class Station extends MetroComponent
     public String toString() {
         return "Station [numStation=" + numStation + ", nom=" + nom + ", numLigne=" + numLigne + ", isTerminus="
                 + isTerminus + ", nbBranchement=" + nbBranchement + "]";
+    }
+    public int getX() {
+        return x;
+    }
+    public void setX(int x) {
+        this.x = x;
+    }
+    public int getY() {
+        return y;
+    }
+    public void setY(int y) {
+        this.y = y;
     }
     
 }

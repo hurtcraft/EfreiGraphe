@@ -36,8 +36,10 @@ public class MetroComponentFactory {
             String numLigne=data[3];
             boolean isTerminus=Boolean.parseBoolean(data[4].toLowerCase());
             int nbBranchement=Integer.parseInt(data[5]);
+            int x=Integer.parseInt(data[6]);
+            int y=Integer.parseInt(data[7]);
 
-            return new Station(numStation, nomStation, numLigne, isTerminus, nbBranchement);
+            return new Station(numStation, nomStation, numLigne, isTerminus, nbBranchement,x,y);
 
         } catch (Exception e) {
             e.printStackTrace();

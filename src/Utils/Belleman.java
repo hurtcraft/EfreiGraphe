@@ -30,7 +30,6 @@ public class Belleman {
 
         while (!priorityQueue.isEmpty() && MAX_ITERATION>0) {
             currentSommet=priorityQueue.poll().getCurrent();
-            System.out.println("current sommet "+currentSommet);
             if(visited.contains(currentSommet)){
                 continue;
             }
@@ -50,8 +49,7 @@ public class Belleman {
         int tmp=dest;
         while (tmp!=source) {
             lst.add(workingMap.get(tmp));
-            System.out.println(tmp+" "+source+" "+dest);
-            System.out.println(workingMap.get(tmp));
+
             tmp=workingMap.get(tmp).getSource();
         }
         lst.add(workingMap.get(tmp));
@@ -74,7 +72,6 @@ public class Belleman {
             tmpSource=sourceAndWeight.getSource();
             tmpDest=sourceAndWeight.getCurrent();
             tmpWeight=sourceAndWeight.getPonderation()-count;
-            // System.out.println(tmpSource+" "+tmpDest+" "+tmpWeight);
             System.out.print(String.format(" --%d--> [%d]",tmpWeight,tmpDest));
             count+=tmpWeight;
         }

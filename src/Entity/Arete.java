@@ -1,6 +1,6 @@
 package Entity;
 
-public class Arete extends MetroComponent{
+public class Arete extends MetroComponent implements Comparable<Arete>{
     private int station1;
     private int station2;
     private int tempsTrajet;
@@ -31,5 +31,9 @@ public class Arete extends MetroComponent{
     @Override
     public String toString() {
         return "Aretes [station1=" + station1 + ", station2=" + station2 + ", tempsTrajet=" + tempsTrajet + "]";
+    }
+    @Override
+    public int compareTo(Arete a) {
+        return Integer.compare(tempsTrajet, a.tempsTrajet);
     }
 }
