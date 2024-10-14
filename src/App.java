@@ -16,8 +16,10 @@ public class App {
 
     public static void main(String[] args) throws Exception {
         // save();
+        
+        String dataFile="ressources\\cleanedMetro.txt";
+        MetroDataGetter.init(dataFile);
         Map<Integer,Station> allStations=MetroDataGetter.getMapOfStation();
-
         Window w=new Window(allStations);
         
     
@@ -27,7 +29,6 @@ public class App {
     public static void save(){
         String dataFile="ressources\\cleanedMetro.txt";
         MetroDataGetter.init(dataFile);
-
         Graphe graphe=MetroDataGetter.getGraphe();
         Map<Integer,Station> allStations=MetroDataGetter.getMapOfStation();
         if(GrapheChecker.isConnexe(graphe, allStations.keySet())){

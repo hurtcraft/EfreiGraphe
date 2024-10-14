@@ -19,7 +19,8 @@ public class Window {
     private Menu menu;
     // 987*952
     public Window(Map<Integer,Station> allStations) throws IOException{
-        this.frame= new JFrame("Ma Fenêtre");
+        this.frame= new JFrame("jsp quoi mettre");
+        GUIPoint.setWindowDimenson(MetroMap.mapWidth,MetroMap.height);
         iniMetroMap(allStations);
         initMenu();
 
@@ -39,7 +40,7 @@ public class Window {
         this.menu=new Menu(d);
     }
     public void iniMetroMap(Map<Integer,Station> allStations) throws IOException{
-        Dimension d =new Dimension(mapWidth, height);
+        Dimension d =new Dimension(MetroMap.mapWidth, height);
         this.metroMap=new MetroMap(d,allStations);
     }
 

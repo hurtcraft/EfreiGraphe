@@ -50,11 +50,7 @@ public class Station extends MetroComponent
     public void setNbBranchement(int nbBranchement) {
         this.nbBranchement = nbBranchement;
     }
-    @Override
-    public String toString() {
-        return "Station [numStation=" + numStation + ", nom=" + nom + ", numLigne=" + numLigne + ", isTerminus="
-                + isTerminus + ", nbBranchement=" + nbBranchement + "]";
-    }
+
     public int getX() {
         return x;
     }
@@ -66,6 +62,12 @@ public class Station extends MetroComponent
     }
     public void setY(int y) {
         this.y = y;
+    }
+
+    @Override
+    public String toString() {
+        return "Station [numStation=" + numStation + ", nom=" + nom + ", numLigne=" + numLigne + ", isTerminus="
+                + isTerminus + ", nbBranchement=" + nbBranchement + ", x=" + x + ", y=" + y + "]";
     }
     
 }
