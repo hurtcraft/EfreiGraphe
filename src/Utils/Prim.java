@@ -11,7 +11,7 @@ import Entity.SourceAndWeight;
 
 public class Prim {
     
-    public static void execute(Graphe g){
+    public static Graphe execute(Graphe g){
         int start = 0;
         int currentSommet=start;
         List<Arete> listAretes=g.getListAretes(currentSommet);
@@ -35,8 +35,7 @@ public class Prim {
             visited.add(currentSommet);
         
         }
-        System.out.println(g);
-        System.out.println(g2);
+        return g2;
         
     }
 

@@ -8,6 +8,8 @@ import javax.swing.JFrame;
 import java.util.Map;
 
 import Entity.Station;
+import Utils.MetroDataGetter;
+import Utils.Prim;
 
 public class Window {
     private JFrame frame;
@@ -33,16 +35,18 @@ public class Window {
         
         frame.add(metroMap, BorderLayout.CENTER);
         frame.add(menu, BorderLayout.CENTER);
+        
     }
 
     public void initMenu(){
         Dimension d =new Dimension(menuWidth, height);
-        this.menu=new Menu(d);
+        this.menu=new Menu(d,metroMap);
     }
     public void iniMetroMap(Map<Integer,Station> allStations) throws IOException{
         Dimension d =new Dimension(MetroMap.mapWidth, height);
         this.metroMap=new MetroMap(d,allStations);
     }
+
 
     
 }

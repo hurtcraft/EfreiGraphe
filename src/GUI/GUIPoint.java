@@ -4,6 +4,7 @@ import javax.swing.*;
 import Entity.Point;
 import Entity.SelectedStation;
 import Entity.Station;
+import Utils.PointNormalizer;
 
 import java.awt.*;
 import java.awt.event.MouseAdapter;
@@ -36,7 +37,7 @@ public class GUIPoint extends JButton {
     }
 
     public GUIPoint(Station s){
-        normalizePoint(s);
+        // PointNormalizer.normalizePoint(s);
         this.x=s.getX();
         this.y=s.getY();
         this.station=s;
@@ -77,54 +78,54 @@ public class GUIPoint extends JButton {
 
     }
 
-    private static void normalizePoint(Station s) {
-        normalizePointBasDroite(s);
-        normalizePointBasGauche(s);
-        normalizePointHautGauche(s);
-        normalizePointHautDroite(s);
-    }
+    // private static void normalizePoint(Station s) {
+    //     normalizePointBasDroite(s);
+    //     normalizePointBasGauche(s);
+    //     normalizePointHautGauche(s);
+    //     normalizePointHautDroite(s);
+    // }
 
-    private static void normalizePointHautGauche(Station s){
-        int x=s.getX();
-        int y=s.getY();
-        if(x<limX && y<limY){
-            return;
-        }
+    // private static void normalizePointHautGauche(Station s){
+    //     int x=s.getX();
+    //     int y=s.getY();
+    //     if(x<limX && y<limY){
+    //         return;
+    //     }
         
-    }
-    private static void normalizePointHautDroite(Station s){
-        int x=s.getX();
-        int y=s.getY();
-        if(x<limX && y>limY){
-            s.setX(x);
-            s.setY(y+18);
-        }        
-    }
+    // }
+    // private static void normalizePointHautDroite(Station s){
+    //     int x=s.getX();
+    //     int y=s.getY();
+    //     if(x<limX && y>limY){
+    //         s.setX(x);
+    //         s.setY(y+18);
+    //     }        
+    // }
 
 
 
-    private static void normalizePointBasGauche(Station s){
-        int x=s.getX();
-        int y=s.getY();
-        if(x>limX && y<limY){
+    // private static void normalizePointBasGauche(Station s){
+    //     int x=s.getX();
+    //     int y=s.getY();
+    //     if(x>limX && y<limY){
 
-            s.setX(x+8);
-            s.setY(y+2);
+    //         s.setX(x+8);
+    //         s.setY(y+2);
 
-        }
+    //     }
 
-    }
-    private static void normalizePointBasDroite(Station s){
-        int x=s.getX();
-        int y=s.getY();
-        if(x>limX && y>limY){
-            s.setX(x+8);
-            s.setY(y+15);
-        }
+    // }
+    // private static void normalizePointBasDroite(Station s){
+    //     int x=s.getX();
+    //     int y=s.getY();
+    //     if(x>limX && y>limY){
+    //         s.setX(x+8);
+    //         s.setY(y+15);
+    //     }
 
         
 
-    }
+    // }
 
     @Override
     public String toString() {
