@@ -121,11 +121,14 @@ public class GUIPoint extends JButton {
             s.setX(x+8);
             s.setY(y+15);
         }
-
-        
-
     }
 
+    public int getX(){
+        return x;
+    }
+    public int getY(){
+        return y;
+    }
     @Override
     public String toString() {
         return "GUIPoint [station=" + station + "]";

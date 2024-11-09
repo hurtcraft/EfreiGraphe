@@ -35,6 +35,7 @@ public class MetroMap extends JPanel {
     private ArrayList<GUIPoint> clickedPoints = new ArrayList<>();
     private Map<Integer,GUIPoint> mapIDStationToPoint;
     private Graphe graphe;
+
     public MetroMap(Dimension dimension, Map<Integer, Station> allStations) throws IOException {
         setSize(dimension);
         setLayout(null);
@@ -69,7 +70,7 @@ public class MetroMap extends JPanel {
                         markPoint(gp);
                         clickedPoints.add(gp); 
                         List<SourceAndWeight> lstAretes=Belleman.getShortestPath(graphe, stationSource.getNumStation(), stationDest.getNumStation());              
-                        drawArete(lstAretes);
+                        dreawPoint(lstAretes);
                     } 
                     else{
                         resetStations();
@@ -101,7 +102,16 @@ public class MetroMap extends JPanel {
         gp.setBackground(Color.RED);
         clickedPoints.add(gp); 
     }
-    private void drawArete(List<SourceAndWeight> lstAretes){
+    private void drawArete(GUIPoint gp1,GUIPoint gp2){
+        int x1=gp1.getX();
+        int x2=gp2.getX();
+        int y1=gp1.getY();
+        int y2=gp2.getY();
+        LineDrawer ld=new LineDrawer(x1, y1, x2, y2);
+        
+        return;
+    }
+    private void dreawPoint(List<SourceAndWeight> lstAretes){
         System.out.println("lst source "+lstAretes);
         int source;
         int dest;
