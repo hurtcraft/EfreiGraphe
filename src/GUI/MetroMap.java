@@ -6,6 +6,8 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
+import java.text.Normalizer;
+
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
@@ -15,6 +17,7 @@ import Entity.SourceAndWeight;
 import Entity.Station;
 import Utils.Belleman;
 import Utils.MetroDataGetter;
+import Utils.PointNormalizer;
 import Utils.Prim;
 
 import java.util.Map;
@@ -36,25 +39,40 @@ public class MetroMap extends JPanel {
     private ArrayList<GUIPoint> clickedPoints = new ArrayList<>();
     private Map<Integer,GUIPoint> mapIDStationToPoint;
     private Graphe graphe;
-
+    private PrimGUI pg;
     public MetroMap(Dimension dimension, Map<Integer, Station> allStations) throws IOException {
         setSize(dimension);
         setLayout(null);
+        PointNormalizer.setWindowDimenson(this.getWidth(), this.getHeight());
+        
         this.mapIDStationToPoint=new HashMap();
         this.graphe=MetroDataGetter.getGraphe();
         img = ImageIO.read(new File(imgPath));
         initButtons(allStations);
+
+        pg=new PrimGUI(Prim.execute(graphe));
+        pg.setBounds(0, 0, this.getWidth(), this.getHeight());  // Assurez-vous que PrimGUI occupe toute la taille du panneau
+        this.add(pg);
+
     }
 
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         g.drawImage(img, 0, -40, mapWidth, height, this);
-    }
 
+
+        
+    }
+    public void drawPrim(boolean b){
+        pg.draw(b);
+        pg.repaint();
+
+    }
     private void initButtons(Map<Integer, Station> allStations) {
         for (Integer idStation : allStations.keySet()) {
             Station s = allStations.get(idStation);
+            PointNormalizer.normalizePoint(s);
             GUIPoint gp = new GUIPoint(s);
             gp.setStationClickListener(new StationClickListener() {
                 @Override
@@ -131,9 +149,6 @@ public class MetroMap extends JPanel {
     private void drawPoint(List<SourceAndWeight> lstAretes){
         System.out.println("lst source "+lstAretes);
         int source;
-        int dest;
-        GUIPoint gp1=null;
-        GUIPoint gp2=null;
 
 
         for (SourceAndWeight sourceAndWeight : lstAretes) {
