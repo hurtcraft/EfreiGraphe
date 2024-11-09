@@ -22,14 +22,14 @@ public class LineDrawer extends JPanel {
         g.drawLine(x1, y1, x2, y2);
     }
 
-    public static void main(String[] args) {
-        JFrame frame = new JFrame("Dessiner une droite");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(400, 400);
+    // public static void main(String[] args) {
+    //     JFrame frame = new JFrame("Dessiner une droite");
+    //     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    //     frame.setSize(400, 400);
         
-        LineDrawer linePanel = new LineDrawer(50, 50, 300, 300);
+    //     LineDrawer linePanel = new LineDrawer(50, 50, 300, 300);
         
-        frame.add(linePanel);
-        frame.setVisible(true);
-    }
+    //     frame.add(linePanel);
+    //     frame.setVisible(true);
+    // }
 }

@@ -15,6 +15,7 @@ import Entity.SourceAndWeight;
 import Entity.Station;
 import Utils.Belleman;
 import Utils.MetroDataGetter;
+import Utils.Prim;
 
 import java.util.Map;
 import java.util.HashMap;
@@ -70,7 +71,7 @@ public class MetroMap extends JPanel {
                         markPoint(gp);
                         clickedPoints.add(gp); 
                         List<SourceAndWeight> lstAretes=Belleman.getShortestPath(graphe, stationSource.getNumStation(), stationDest.getNumStation());              
-                        dreawPoint(lstAretes);
+                        drawPoint(lstAretes);
                     } 
                     else{
                         resetStations();
@@ -84,7 +85,23 @@ public class MetroMap extends JPanel {
         }
         repaint();
     }
+    public static void drawPrim(Graphe g){
+        Graphe primGraphe=Prim.execute(g);
+        Map<Integer,List<Arete>>  map=primGraphe.getGraphe();
+        for (Integer station : map.keySet()) {
+            List<Arete>lstArete=map.get(station);
+            for (Arete arete : lstArete) {
+                Station s1=MetroDataGetter.getMapOfStation().get(arete.getStation1());
+                Station s2=MetroDataGetter.getMapOfStation().get(arete.getStation2());
+                // GUIPoint gp1=new GUIPoint(s1);
+                // GUIPoint gp2=new GUIPoint(s2);
+                // drawArete(gp1, gp2);
+                
+            }
+        }
 
+
+    } 
     private void resetStations() {
         for (GUIPoint gp : clickedPoints) {
             gp.setIsClicked(false);
@@ -102,7 +119,7 @@ public class MetroMap extends JPanel {
         gp.setBackground(Color.RED);
         clickedPoints.add(gp); 
     }
-    private void drawArete(GUIPoint gp1,GUIPoint gp2){
+    private static void drawArete(GUIPoint gp1,GUIPoint gp2){
         int x1=gp1.getX();
         int x2=gp2.getX();
         int y1=gp1.getY();
@@ -111,7 +128,7 @@ public class MetroMap extends JPanel {
         
         return;
     }
-    private void dreawPoint(List<SourceAndWeight> lstAretes){
+    private void drawPoint(List<SourceAndWeight> lstAretes){
         System.out.println("lst source "+lstAretes);
         int source;
         int dest;

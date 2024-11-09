@@ -19,7 +19,6 @@ import Entity.SourceAndWeight;
 public class Belleman {
     
     public static Map<Integer,SourceAndWeight> execute(Graphe g,int source){
-        int MAX_ITERATION=g.getNbSommet()-1;
         Map<Integer,SourceAndWeight>workingMap=init(g,source);
 
         PriorityQueue<SourceAndWeight> priorityQueue=new PriorityQueue<>();
@@ -28,7 +27,7 @@ public class Belleman {
         priorityQueue.add(workingMap.get(source));
         Set<Integer>visited=new HashSet<>();
 
-        while (!priorityQueue.isEmpty() && MAX_ITERATION>0) {
+        while (!priorityQueue.isEmpty()) {
             currentSommet=priorityQueue.poll().getCurrent();
             if(visited.contains(currentSommet)){
                 continue;
@@ -36,7 +35,6 @@ public class Belleman {
 
             listAretes=g.getListAretes(currentSommet);
             updateWeight(listAretes, workingMap,priorityQueue);
-            MAX_ITERATION-=1;
             visited.add(currentSommet);
             
         }

@@ -30,14 +30,15 @@ public class Menu extends JPanel{
 
             @Override
             public void actionPerformed(ActionEvent e){
-                System.out.println(MetroDataGetter.getGraphe());
-                Graphe g=Prim.execute(MetroDataGetter.getGraphe());
-                System.out.println(g.getGraphe());
+                // MetroMap.drawPrim(MetroDataGetter.getGraphe());
+                // System.out.println(MetroDataGetter.getGraphe());
+                // Graphe g=Prim.execute(MetroDataGetter.getGraphe());
+                // System.out.println(g.getGraphe());
 
-                for (Integer i : g.getSommets()) {
-                    System.out.println(mapOfStation.get(i));
-                }
-                System.out.println("###################################################");
+                // for (Integer i : g.getSommets()) {
+                //     System.out.println(mapOfStation.get(i));
+                // }
+                // System.out.println("###################################################");
 
                 // System.out.println(g);                
             }
