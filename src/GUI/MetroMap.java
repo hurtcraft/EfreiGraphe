@@ -30,7 +30,7 @@ public class MetroMap extends JPanel {
     private Image img;
     public static final int mapWidth = 1000;
     public static final int height = 950;
-    private static final String imgPath = "ressources\\metrof_r.png"; 
+    private static final String imgPath = "src/ressources/metrof_r.png"; 
 
     private static Station stationSource;
     private static Station stationDest;

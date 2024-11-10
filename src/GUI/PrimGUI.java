@@ -47,10 +47,7 @@ public class PrimGUI extends JPanel {
     }
     public void draw(boolean b){
         shouldDraw=b;
-        // if(shouldDraw){
-        //     repaint();
 
-        // }
         if (shouldDraw) {
             setVisible(true);  // Rendre le panneau visible si shouldDraw est true
         } else {
@@ -64,7 +61,6 @@ public class PrimGUI extends JPanel {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         g.setColor(Color.GREEN); // Définit la couleur verte pour le dessin
-        System.out.println("lalalalalal");
         if(shouldDraw){
             Graphics2D g2d = (Graphics2D) g;
             
