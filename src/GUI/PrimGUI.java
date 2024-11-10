@@ -74,6 +74,7 @@ public class PrimGUI extends JPanel {
                 int x2 = edge[2];
                 int y2 = edge[3];
                 g.drawLine(x1, y1, x2, y2); // Dessine la ligne entre les points (x1, y1) et (x2, y2)
+
             }
         }
 
