@@ -15,7 +15,8 @@ import Entity.Arete;
 import Entity.Graphe;
 import Entity.SourceAndWeight;
 import Entity.Station;
-import Utils.Belleman;
+import Utils.Dijsktra;
+import Utils.Dijsktra;
 import Utils.MetroDataGetter;
 import Utils.PointNormalizer;
 import Utils.Prim;
@@ -88,7 +89,8 @@ public class MetroMap extends JPanel {
                         nbBtnClicked++;
                         markPoint(gp);
                         clickedPoints.add(gp); 
-                        List<SourceAndWeight> lstAretes=Belleman.getShortestPath(graphe, stationSource.getNumStation(), stationDest.getNumStation());              
+                        List<SourceAndWeight> lstAretes=Dijsktra.getShortestPath(graphe, stationSource.getNumStation(), stationDest.getNumStation());              
+                        Dijsktra.printShortestPath(graphe, stationSource.getNumStation(), stationDest.getNumStation());
                         drawPoint(lstAretes);
                     } 
                     else{
@@ -139,7 +141,6 @@ public class MetroMap extends JPanel {
     }
 
     private void drawPoint(List<SourceAndWeight> lstAretes){
-        System.out.println("lst source "+lstAretes);
         int source;
 
 

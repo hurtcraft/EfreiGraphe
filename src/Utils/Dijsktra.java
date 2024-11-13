@@ -16,7 +16,7 @@ import Entity.Arete;
 import Entity.Graphe;
 import Entity.SourceAndWeight;
 
-public class Belleman {
+public class Dijsktra {
     
     public static Map<Integer,SourceAndWeight> execute(Graphe g,int source){
         Map<Integer,SourceAndWeight>workingMap=init(g,source);
@@ -63,7 +63,10 @@ public class Belleman {
         int tmpWeight;
 
         int count=0;
-
+        System.out.println("###########################################################");
+        System.out.println("[SOURCE] "+MetroDataGetter.getMapOfStation().get(source).getNom());
+        System.out.println("[DESTINATION] "+MetroDataGetter.getMapOfStation().get(dest).getNom());
+        System.out.println("###########################################################");
         for (int i = 0; i < lst.size(); i++) {
             
             sourceAndWeight=lst.get(i);
@@ -73,7 +76,9 @@ public class Belleman {
             System.out.print(String.format(" --%d--> [%d]",tmpWeight,tmpDest));
             count+=tmpWeight;
         }
-        System.out.println(System.lineSeparator()+"[TOTAL] : "+finalWeight+" sec");
+
+        System.out.println(System.lineSeparator()+"[TOTAL TEMPS] : "+finalWeight+" sec soit environ : "+finalWeight/60+" min");
+        System.out.println("###########################################################");
 
     }
     private static void updateWeight(List<Arete> listAretes,Map<Integer,SourceAndWeight>workingMap,PriorityQueue<SourceAndWeight> priorityQueue){

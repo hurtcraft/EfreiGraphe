@@ -1,43 +1,47 @@
 package Utils;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.PriorityQueue;
-import java.util.Set;
+import java.util.*;
 
 import Entity.Arete;
 import Entity.Graphe;
-import Entity.SourceAndWeight;
 
 public class Prim {
     
-    public static Graphe execute(Graphe g){
-        int start = 0;
-        int currentSommet=start;
-        List<Arete> listAretes=g.getListAretes(currentSommet);
-        PriorityQueue<Arete> priorityQ=new PriorityQueue<>();
-        Set<Integer>visited=new HashSet<>();
-        priorityQ.addAll(listAretes);
-        // visited.add(currentSommet);
-        Graphe g2=new Graphe();
-        Arete currentArete;
+    public static Graphe execute(Graphe g) {
+        int start = 0; 
+        PriorityQueue<Arete> priorityQ = new PriorityQueue<>();
+        Set<Integer> visited = new HashSet<>();
+        Graphe g2 = new Graphe(); 
+        int sum = 0;
+
+        visited.add(start);
+        priorityQ.addAll(g.getListAretes(start));
+
         while (!priorityQ.isEmpty()) {
-            currentArete=priorityQ.poll();
-            currentSommet=currentArete.getStation2();
-            if(visited.contains(currentSommet)){
-                continue;
+            Arete currentArete = priorityQ.poll();
+            
+            int sommet1 = currentArete.getStation1();
+            int sommet2 = currentArete.getStation2();
+            int nouveauSommet = -1;
+
+            if (visited.contains(sommet1) && !visited.contains(sommet2)) {
+                nouveauSommet = sommet2;
+            } else if (visited.contains(sommet2) && !visited.contains(sommet1)) {
+                nouveauSommet = sommet1;
             }
 
-            priorityQ.addAll(g.getListAretes(currentSommet));
-            
-            
-            g2.add(currentArete.getStation1(), currentArete.getStation2(), currentArete.getTempsTrajet());
-            visited.add(currentSommet);
-        
+            if (nouveauSommet == -1) {
+                continue; 
+            }
+
+            g2.add(sommet1, sommet2, currentArete.getTempsTrajet());
+            visited.add(nouveauSommet);
+            sum += currentArete.getTempsTrajet();
+            priorityQ.addAll(g.getListAretes(nouveauSommet));
         }
+
+        System.out.println("SUM PRIM : " + sum);
+
         return g2;
-        
     }
-
-
 }

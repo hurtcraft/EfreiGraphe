@@ -19,7 +19,7 @@ public class SourceAndWeight implements Comparable<SourceAndWeight>{
     public int getPonderation() {
         return ponderation;
     }
-    public void setPonderation(int ponderation) {
+    public void setPonderation(int ponderation) { 
         this.ponderation = ponderation;
     }
 

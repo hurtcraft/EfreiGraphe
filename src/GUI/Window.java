@@ -15,7 +15,7 @@ public class Window {
     private JFrame frame;
     private int menuWidth=200;
     private int mapWidth=1000;
-    private int height=900;
+    private int height=920;
     private int width=mapWidth+menuWidth;
     private MetroMap metroMap;
     private Menu menu;
